@@ -10,7 +10,7 @@
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
-
+var header=document.querySelector("#header");
 
 var Upper=function(){
     const Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXTZ"; 
@@ -72,7 +72,7 @@ if (userChoice==="Length"){
 
 function generatePassword () {
         var randomValues =" "
-        var stringValues = value2+value3+value4;
+        var stringValues = value2.concat(value3);value3.concat(value4);
         var sizeOfCharacter = aNumber;
         for (var i = 0; i < numberOfCharacters; i++) {
            randomValues = randomValues+stringValues.charAt(Math.floor(Math.random() * sizeOfCharacter));
@@ -94,4 +94,4 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-window.addEventListener("click",Criteria);
+header.addEventListener("click",Criteria);
