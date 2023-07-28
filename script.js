@@ -12,26 +12,26 @@
 var generateBtn = document.querySelector("#generate");
 var header=document.querySelector("#header");
 
-var Upper=function(){
+function Upper(){
     const Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXTZ"; 
     return Alphabet[Math.floor(Math.random() * alphabet.length)]
 
 }
-var Lower=function(){
+function Lower(){
     const alphabet = "abcdefghijklmnopqrstuvwxyz"
   return alphabet[Math.floor(Math.random() * alphabet.length)]
 }
 
-var Both=function(){
+function Both(){
     const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
   return alphabet[Math.floor(Math.random() * alphabet.length)]; 
 }
 
-var numba=function(){
+function numba(){
 let x=Math.floor((Math.random()*9)+1);
 }
 
-var Special=function(){
+function Special(){
 var characters="$#_()*&%@"
 return characters[Math.floor(Math.random() * characters.length)]; 
 }
@@ -50,22 +50,22 @@ var value1=aNumber
        if(Cases=== "Upper") {
        Upper();
        }else if(Cases==="Lower"){
-       var value2=Lower;
+       Lower();
         
        } else if (Cases==="Both") {
-        var value2=Both;
+        Both();
        }
         
     } else if (userChoice=== "Numbers") {
         var Numbers=window.confirm("Do You Want Numbers in Your Passowrd?");
         if (Numbers) {
-           ;
+           numbas();
         }
     }
     else if (userChoice=== "Special") {
        var spec=window.confirm("Do You WantSpecial Characters?");
         if(spec) {
-            var value4=Special;
+            Special();
         }
         }
 
