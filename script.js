@@ -37,17 +37,18 @@ return characters[Math.floor(Math.random() * characters.length)];
 }
 
 // Write password to the #password input
+
 function Criteria() {
     var userChoice=window.prompt ("Choose Criteria:Length, Case, Numbers, Special");
 if (userChoice==="Length"){
     aNumber=Number(window.prompt("Pick a number from 8-128 Characters",""));
-
+var value1=aNumber
 }
 
  else if (userChoice=== "Case") {
       var Cases= window.prompt("Upper or Lower, or Both");
        if(Cases=== "Upper") {
-       var value2=Upper;
+       Upper();
        }else if(Cases==="Lower"){
        var value2=Lower;
         
@@ -56,9 +57,9 @@ if (userChoice==="Length"){
        }
         
     } else if (userChoice=== "Numbers") {
-        var numbas=window.confirm("Do You Want Numbers in Your Passowrd?");
-        if (numbas) {
-           var value3=numba;
+        var Numbers=window.confirm("Do You Want Numbers in Your Passowrd?");
+        if (Numbers) {
+           ;
         }
     }
     else if (userChoice=== "Special") {
@@ -70,16 +71,24 @@ if (userChoice==="Length"){
 
 }
 
-function generatePassword () {
-        var randomValues =" "
-        var stringValues = value2.concat(value3);value3.concat(value4);
-        var sizeOfCharacter = aNumber;
-        for (var i = 0; i < numberOfCharacters; i++) {
-           randomValues = randomValues+stringValues.charAt(Math.floor(Math.random() * sizeOfCharacter));
-        }
-        return randomValues;
+public static String randomCharacterString(int length) {
+  String randomCharacters = value2+value3+value4;
+  StringBuffer randomString = new StringBuffer(length);
+  Random random = new Random();
+
+  for (int i = 0; i < length; i++) {
+      int randomIndex = random.nextInt(randomCharacters.length());
+      char randomChar = randomCharacters.charAt(randomIndex);
+      randomString.append(randomChar);
+  }
+
+  return randomString.toString();
 }
 
+function generatePassword () {
+  String randomString1 = randomCharacterString(value1);
+  System.out.println("Your Password " + randomString1);
+}
 
 function writePassword() {
   var password = generatePassword();
@@ -93,5 +102,6 @@ function writePassword() {
 
 
 // Add event listener to generate button
+
 generateBtn.addEventListener("click", writePassword);
 header.addEventListener("click",Criteria);
