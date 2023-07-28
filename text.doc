@@ -1,0 +1,35 @@
+
+public static String randomCharacterString(int length) {
+  String randomCharacters = value2+value3+value4;
+  StringBuffer randomString = new StringBuffer(length);
+  Random random = new Random();
+
+  for (int i = 0; i < length; i++) {
+      int randomIndex = random.nextInt(randomCharacters.length());
+      char randomChar = randomCharacters.charAt(randomIndex);
+      randomString.append(randomChar);
+  }
+
+  return randomString.toString();
+}
+
+function generatePassword () {
+  String randomString1 = randomCharacterString(value1);
+  System.out.println("Your Password " + randomString1);
+}
+
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+
+}
+
+
+
+
+// Add event listener to generate button
+
+generateBtn.addEventListener("click", writePassword);
+header.addEventListener("click",Criteria);

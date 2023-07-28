@@ -12,6 +12,8 @@
 var generateBtn = document.querySelector("#generate");
 var header=document.querySelector("#header");
 
+
+
 function Upper(){
     const Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXTZ"; 
     return Alphabet[Math.floor(Math.random() * alphabet.length)]
@@ -37,16 +39,22 @@ return characters[Math.floor(Math.random() * characters.length)];
 }
 
 // Write password to the #password input
-
-function Criteria() {
-    var userChoice=window.prompt ("Choose Criteria:Length, Case, Numbers, Special");
-if (userChoice==="Length"){
-    aNumber=Number(window.prompt("Pick a number from 8-128 Characters",""));
-var value1=aNumber
+function Welcome () {
+ var userChoice= window.confirm(("Before we start, you have to choose how you'd like your password."));
+  
+ if (userChoice) {
+  window.prompt("Answer the following questions for:Length, Case, Numbers, Special");
+ }
 }
 
- else if (userChoice=== "Case") {
-      var Cases= window.prompt("Upper or Lower, or Both");
+
+function Length (){
+    aNumber=Number(window.prompt("Pick a number from 8-128 Characters",""));
+
+}
+
+function Case () {
+   var Cases=prompt("Upper or Lower, or Both");
        if(Cases=== "Upper") {
        Upper();
        }else if(Cases==="Lower"){
@@ -54,54 +62,34 @@ var value1=aNumber
         
        } else if (Cases==="Both") {
         Both();
-       }
+       }}
         
-    } else if (userChoice=== "Numbers") {
+    function Numbers () {
         var Numbers=window.confirm("Do You Want Numbers in Your Passowrd?");
         if (Numbers) {
            numbas();
-        }
-    }
-    else if (userChoice=== "Special") {
-       var spec=window.confirm("Do You WantSpecial Characters?");
+        }}
+    
+    function specialch() {
+       var spec=window.confirm("Do You Want Special Characters?");
         if(spec) {
             Special();
         }
         }
-
+ 
+        
+        
+        generateBtn.addEventListener("click",
+        function (){
+          var require = [
+  function () {Welcome()},
+  function() { Length() },
+  function() { Case() },
+  function() { Numbers() },
+  function() { specialch() },
+  function() {writePassword()}
+]
+for (i = 0; i < require.length; i++) {
+  require[i]();
 }
-
-public static String randomCharacterString(int length) {
-  String randomCharacters = value2+value3+value4;
-  StringBuffer randomString = new StringBuffer(length);
-  Random random = new Random();
-
-  for (int i = 0; i < length; i++) {
-      int randomIndex = random.nextInt(randomCharacters.length());
-      char randomChar = randomCharacters.charAt(randomIndex);
-      randomString.append(randomChar);
-  }
-
-  return randomString.toString();
-}
-
-function generatePassword () {
-  String randomString1 = randomCharacterString(value1);
-  System.out.println("Your Password " + randomString1);
-}
-
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
-}
-
-
-
-
-// Add event listener to generate button
-
-generateBtn.addEventListener("click", writePassword);
-header.addEventListener("click",Criteria);
+        });
