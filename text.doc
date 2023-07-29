@@ -26,10 +26,14 @@ function writePassword() {
 
 }
 
-
+descriptor1 = Object.getOwnPropertyDescriptor(object1, 'property1');
 
 
 // Add event listener to generate button
 
 generateBtn.addEventListener("click", writePassword);
 header.addEventListener("click",Criteria);
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptor
+
+

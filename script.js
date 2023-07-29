@@ -10,86 +10,147 @@
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
-var header=document.querySelector("#header");
+var StartBtn = document.querySelector("#start");
 
+StartBtn.addEventListener("click",
+  function () {
+    var require = [
+      function () { Welcome() },
+      function () { Length() },
+      function () { Case() },
+      function () { Numbers() },
+      function () { specialch() },
+    ]
+    for (i = 0; i < require.length; i++) {
+      require[i]();
+    }
+  });
 
-
-function Upper(){
-    const Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXTZ"; 
-    return Alphabet[Math.floor(Math.random() * alphabet.length)]
-
+function Upper(length) {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const charactersLength = characters.length;
+    let counter = 0;
+    while (counter < length) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      counter += 1;
+    }
+    return result;
 }
-function Lower(){
-    const alphabet = "abcdefghijklmnopqrstuvwxyz"
-  return alphabet[Math.floor(Math.random() * alphabet.length)]
+
+
+function Lower(length) {
+    let result = '';
+    const characters = 'abcdefghijklmnopqrstuvwxyz';
+    const charactersLength = characters.length;
+    let counter = 0;
+    while (counter < length) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      counter += 1;
+    }
+    return result;
 }
 
-function Both(){
-    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
-  return alphabet[Math.floor(Math.random() * alphabet.length)]; 
+
+function Both(length) {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    const charactersLength = characters.length;
+    let counter = 0;
+    while (counter < length) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      counter += 1;
+    }
+    return result;
 }
 
-function numba(){
-let x=Math.floor((Math.random()*9)+1);
+function numbas(len) {
+  {
+    var text = " ";
+    var charset = "123456798";
+    for( var i=0; i < len; i++ )
+        text += charset.charAt(Math.floor(Math.random() * charset.length));
+    return text;
+}
+ 
 }
 
-function Special(){
-var characters="$#_()*&%@"
-return characters[Math.floor(Math.random() * characters.length)]; 
+
+function Special(len) {
+  var text = " ";
+    var charset = "'$#_()*&%@'";
+    for( var i=0; i < len; i++ )
+        text += charset.charAt(Math.floor(Math.random() * charset.length));
+    return text;
 }
 
 // Write password to the #password input
-function Welcome () {
- var userChoice= window.confirm(("Before we start, you have to choose how you'd like your password."));
+function Welcome() {
+  var userChoice = window.confirm(("Before we start, you have to choose how you'd like your password."));
+
+  if (userChoice) {
+    window.confirm("Answer the following questions for:Length, Case, Numbers, Special");
+  }
+}
+
+
+let Length =function() {
+  var length=prompt("How many characters in your password?");
+let strToNr=length;
+strToNr=Number(strToNr);
+  if (length > 8 && length < 128) {
+    return strToNr;
+  }
+}
+
+function Case() {
+  var Cases = prompt("Upper or Lower, or Both");
+  if (Cases === "Upper") {
+    Upper();
+  } else if (Cases === "Lower") {
+    Lower();
+
+  } else if (Cases === "Both") {
+    Both();
+  }
+}
+
+function Numbers() {
+  var Numbers = window.confirm("Do You Want Numbers in Your Passowrd?");
+  if (Numbers) {
+    numbas();
+  }
+}
+
+function specialch() {
+  var spec = window.confirm("Do You Want Special Characters?");
+  if (spec) {
+    Special();
+  }
+}
+
+
+var randomPass= function combinedCharacers() {
+  var value1=Case();
+  var value2=Numbers();
+  var value3=specialch();
+  var together=value1+value2+value3;
   
- if (userChoice) {
-  window.prompt("Answer the following questions for:Length, Case, Numbers, Special");
- }
 }
 
-
-function Length (){
-    aNumber=Number(window.prompt("Pick a number from 8-128 Characters",""));
+function generatePassword() {
 
 }
 
-function Case () {
-   var Cases=prompt("Upper or Lower, or Both");
-       if(Cases=== "Upper") {
-       Upper();
-       }else if(Cases==="Lower"){
-       Lower();
-        
-       } else if (Cases==="Both") {
-        Both();
-       }}
-        
-    function Numbers () {
-        var Numbers=window.confirm("Do You Want Numbers in Your Passowrd?");
-        if (Numbers) {
-           numbas();
-        }}
-    
-    function specialch() {
-       var spec=window.confirm("Do You Want Special Characters?");
-        if(spec) {
-            Special();
-        }
-        }
- 
-        
-        
-        generateBtn.addEventListener("click",
-        function (){
-          var require = [
-  function () {Welcome()},
-  function() { Length() },
-  function() { Case() },
-  function() { Numbers() },
-  function() { specialch() },
-  function() {writePassword()}
-]
-for (i = 0; i < require.length; i++) {
-  require[i]();
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+  
+
 }
-        });
+
+
+
+generateBtn.addEventListener("click", writePassword);
