@@ -36,4 +36,28 @@ header.addEventListener("click",Criteria);
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptor
 
+Change confirm to prompt
 
+let result1=Upper(Length)
+    console.log(result1)
+
+    function randomString(length){
+    if(length<5) length =5;
+  if(length>8) length =8;
+            var text = "";
+      var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      for(let i=0;i<=length;i++){
+            text +=possible[Math.floor(Math.random()*possible.length)]
+      }
+      return text
+}
+
+function string(length){
+    setInterval(() => {
+            console.log(randomString(length));
+        },2000);
+}
+
+string(5);
+
+may need length=Lengthy

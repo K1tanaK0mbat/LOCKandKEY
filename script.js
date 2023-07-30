@@ -16,7 +16,7 @@ StartBtn.addEventListener("click",
   function () {
     var require = [
       function () { Welcome() },
-      function () { Length() },
+      function () { Lengthy() },
       function () { Case() },
       function () { Numbers() },
       function () { specialch() },
@@ -26,63 +26,8 @@ StartBtn.addEventListener("click",
     }
   });
 
-function Upper(length) {
-    let result = '';
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    const charactersLength = characters.length;
-    let counter = 0;
-    while (counter < length) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-      counter += 1;
-    }
-    return result;
-}
 
 
-function Lower(length) {
-    let result = '';
-    const characters = 'abcdefghijklmnopqrstuvwxyz';
-    const charactersLength = characters.length;
-    let counter = 0;
-    while (counter < length) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-      counter += 1;
-    }
-    return result;
-}
-
-
-function Both(length) {
-    let result = '';
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-    const charactersLength = characters.length;
-    let counter = 0;
-    while (counter < length) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-      counter += 1;
-    }
-    return result;
-}
-
-function numbas(len) {
-  {
-    var text = " ";
-    var charset = "123456798";
-    for( var i=0; i < len; i++ )
-        text += charset.charAt(Math.floor(Math.random() * charset.length));
-    return text;
-}
- 
-}
-
-
-function Special(len) {
-  var text = " ";
-    var charset = "'$#_()*&%@'";
-    for( var i=0; i < len; i++ )
-        text += charset.charAt(Math.floor(Math.random() * charset.length));
-    return text;
-}
 
 // Write password to the #password input
 function Welcome() {
@@ -94,61 +39,111 @@ function Welcome() {
 }
 
 
-let Length =function() {
-  var length=prompt("How many characters in your password?");
-let strToNr=length;
+let Lengthy =function() {
+  let strToNr=prompt("How many characters in your password?");
 strToNr=Number(strToNr);
-  if (length > 8 && length < 128) {
+  if (Number > 8 && Number < 128) {
     return strToNr;
-  }
+  
+  } console.log(strToNr);
 }
 
-function Case() {
+function Case(length) {
   var Cases = prompt("Upper or Lower, or Both");
   if (Cases === "Upper") {
-    Upper();
+    function Upper(length) {
+      let result = '';
+      if(length<=128);
+      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      let counter = 0;
+      while (counter < length) {
+        result += characters[Math.floor(Math.random() * characters.length)];
+        counter += 1;
+      }
+      return result;
+    } 
+    console.log(Upper(length));
+
   } else if (Cases === "Lower") {
-    Lower();
+    function Lower(length) {
+    let result = '';
+    length<=128;
+    const characters = 'abcdefghijklmnopqrstuvwxyz';
+    let counter = 0;
+    while (counter < length) {
+      result +=  characters[Math.floor(Math.random() * characters.length)];
+      counter += 1;
+    }
+    return result;
+}
+console.log(Lower(length));
 
   } else if (Cases === "Both") {
-    Both();
+    function Both(length) {
+    let result = '';
+    length<=128;
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    let counter = 0;
+    while (counter < length) {
+      result += characters[Math.floor(Math.random() * characters.length)];
+      counter += 1;
+    }
+    return result;
+}
+console.log(Both(length));
   }
+
 }
 
-function Numbers() {
+
+function Numbers(length) {
   var Numbers = window.confirm("Do You Want Numbers in Your Passowrd?");
   if (Numbers) {
-    numbas();
-  }
+    function numbas(length) {
+    var text = " ";
+    length<=128;
+    var charset = "123456798";
+    for( var i=0; i < length; i++ )
+        text += charset.charAt(Math.floor(Math.random() * charset.length));
+    return text;
+}
+console.log(numbas(length));}
 }
 
-function specialch() {
+function specialch(length) {
   var spec = window.confirm("Do You Want Special Characters?");
   if (spec) {
-    Special();
-  }
+    function Special(length) {
+      length<=128;
+  var text = " ";
+    var charset = "'$#_()*&%@'";
+    for( var i=0; i < length; i++ )
+        text += charset.charAt(Math.floor(Math.random() * charset.length));
+    return text;
 }
-
-
-var randomPass= function combinedCharacers() {
-  var value1=Case();
-  var value2=Numbers();
-  var value3=specialch();
-  var together=value1+value2+value3;
-  
+console.log(Special(length));
+  }
 }
 
 function generatePassword() {
+  function GenPass(result) {
+    const Var1= Case(Lengthy);
+     const var2=Numbers(Lengthy); 
+    const var3=specialch(Lengthy);
+let passkey=Var1+var2+var3;
+result= passkey;
+}
+console.log(GenPass);
 
 }
+
 
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-  
-
+ 
 }
 
 
